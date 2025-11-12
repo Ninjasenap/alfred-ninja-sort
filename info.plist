@@ -12,31 +12,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7B0500BA-22DA-45F0-8109-B0968D460494</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>7B0500BA-22DA-45F0-8109-B0968D460494</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>96684002-6109-4149-8956-F1A239311C35</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>F3F89D86-F05B-45EC-99CC-FC5BA3B2A294</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>9DF768E1-9A23-4373-B5F4-04E07766BD16</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -46,33 +21,7 @@
 				<false/>
 			</dict>
 		</array>
-		<key>96684002-6109-4149-8956-F1A239311C35</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>D545553A-AD02-48E2-AEEC-21FB57F043F4</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>9DF768E1-9A23-4373-B5F4-04E07766BD16</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>BDC98E69-963E-4F50-919D-286ECDAA747B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>D545553A-AD02-48E2-AEEC-21FB57F043F4</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -96,103 +45,6 @@
 	<string>Ninja Sort</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>on sortList(theList)
-    set theIndexList to {}
-    set theSortedList to {}
-    repeat (length of theList) times
-        set theLowItem to ""
-        repeat with a from 1 to (length of theList)
-            if a is not in theIndexList then
-                set theCurrentItem to item a of theList as text
-                if theLowItem is "" then
-                    set theLowItem to theCurrentItem
-                    set theLowItemIndex to a
-                else if theCurrentItem comes before theLowItem then
-                    set theLowItem to theCurrentItem
-                    set theLowItemIndex to a
-                end if
-            end if
-        end repeat
-        set end of theSortedList to theLowItem
-        set end of theIndexList to theLowItemIndex
-    end repeat
-    return theSortedList
-end sortList
-
-
-on run
-  set theQuery to "{query}"
-  set theParagraphs to paragraphs of theQuery
-
-  set theParagraphs to sortlist(theParagraphs)
-
-  set AppleScript's text item delimiters to return
-  set theQuery to theParagraphs as string
-  set AppleScript's text item delimiters to ""
-
-  return theQuery
-
-end run</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D545553A-AD02-48E2-AEEC-21FB57F043F4</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>import sys
-import locale
-
-query = """{query}"""
-
-lines = query.splitlines()
-
-lines = list(filter(None, lines))
-
-strippedLines = [] * len(lines)
-for line in lines:
-	strippedLines.append(line.strip())
-
-query = "\n".join(strippedLines)
-
-sys.stdout.write(query)</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>96684002-6109-4149-8956-F1A239311C35</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -246,61 +98,43 @@ sys.stdout.write(query)</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:scandinavian}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>5</integer>
-						<key>matchstring</key>
-						<string>sv_SE</string>
-						<key>outputlabel</key>
-						<string>for nordic</string>
-						<key>uid</key>
-						<string>F3F89D86-F05B-45EC-99CC-FC5BA3B2A294</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>others</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>7B0500BA-22DA-45F0-8109-B0968D460494</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>import sys
+				<string>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import sys
 import locale
+import os
 
+# Get the query text
 query = """{query}"""
 
-lines = query.splitlines()
+# Get the locale setting from Alfred workflow configuration
+locale_setting = os.getenv('sort_locale', 'en_US.UTF-8')
 
+# Parse lines and filter empty ones
+lines = query.splitlines()
 lines = list(filter(None, lines))
 
-strippedLines = [] * len(lines)
-for line in lines:
-	strippedLines.append(line.strip())
+# Strip whitespace from each line
+stripped_lines = [line.strip() for line in lines]
 
+# Try to set locale for proper sorting
+try:
+    # Set the locale for sorting
+    locale.setlocale(locale.LC_COLLATE, locale_setting)
+    # Sort using locale-aware comparison (handles å, ä, ö, etc.)
+    sorted_lines = sorted(stripped_lines, key=locale.strxfrm)
+except locale.Error:
+    # Fallback to case-insensitive sorting if locale not available
+    sorted_lines = sorted(stripped_lines, key=str.lower)
 
-sortedLines = sorted(strippedLines, key=str.lower)
-
-query = "\n".join(sortedLines)
-sys.stdout.write(query)</string>
+# Join and output
+result = "\n".join(sorted_lines)
+sys.stdout.write(result)</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -317,7 +151,7 @@ sys.stdout.write(query)</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Will sort lines of selected text alphabetically and paste them. Thats pretty much it.</string>
+	<string>Sort lines of selected text alphabetically with proper language support. Now features locale-aware sorting for all major languages including Swedish, Norwegian, Danish, Finnish and more. Configure your preferred language in the workflow settings for proper handling of special characters (å, ä, ö, etc.). All languages use the same efficient sorting algorithm.</string>
 	<key>uidata</key>
 	<dict>
 		<key>6AB49752-34A1-4383-93F8-120891809C85</key>
@@ -329,60 +163,27 @@ sys.stdout.write(query)</string>
 			<key>ypos</key>
 			<real>190</real>
 		</dict>
-		<key>7B0500BA-22DA-45F0-8109-B0968D460494</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>9</integer>
-			<key>note</key>
-			<string>Since I can't get the Python script to sort Scandinavian letters correctly two different scripts will be used.</string>
-			<key>xpos</key>
-			<real>265</real>
-			<key>ypos</key>
-			<real>210</real>
-		</dict>
-		<key>96684002-6109-4149-8956-F1A239311C35</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>7</integer>
-			<key>note</key>
-			<string>Pythin script to trim from whitespaces in beginning and end of lines.</string>
-			<key>xpos</key>
-			<real>475</real>
-			<key>ypos</key>
-			<real>90</real>
-		</dict>
 		<key>9DF768E1-9A23-4373-B5F4-04E07766BD16</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>7</integer>
 			<key>note</key>
-			<string>Pythin script to trim and sort lines in ascending order.</string>
+			<string>Locale-aware Python script to trim and sort lines using configurable language settings. Supports all major languages including Swedish and other Scandinavian languages.</string>
 			<key>xpos</key>
-			<real>565</real>
+			<real>265</real>
 			<key>ypos</key>
-			<real>285</real>
+			<real>190</real>
 		</dict>
 		<key>BDC98E69-963E-4F50-919D-286ECDAA747B</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>note</key>
-			<string>Paste to frontmost window.</string>
+			<string>Paste sorted text to frontmost window.</string>
 			<key>xpos</key>
-			<real>935</real>
+			<real>460</real>
 			<key>ypos</key>
-			<real>185</real>
-		</dict>
-		<key>D545553A-AD02-48E2-AEEC-21FB57F043F4</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>3</integer>
-			<key>note</key>
-			<string>Apple script wich will sort scandinavian letters properly.</string>
-			<key>xpos</key>
-			<real>650</real>
-			<key>ypos</key>
-			<real>90</real>
+			<real>190</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -391,26 +192,133 @@ sys.stdout.write(query)</string>
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<false/>
+				<string>en_US.UTF-8</string>
+				<key>options</key>
+				<array>
+					<dict>
+						<key>label</key>
+						<string>English (US)</string>
+						<key>value</key>
+						<string>en_US.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Swedish</string>
+						<key>value</key>
+						<string>sv_SE.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Norwegian (Bokmål)</string>
+						<key>value</key>
+						<string>nb_NO.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Norwegian (Nynorsk)</string>
+						<key>value</key>
+						<string>nn_NO.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Danish</string>
+						<key>value</key>
+						<string>da_DK.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Finnish</string>
+						<key>value</key>
+						<string>fi_FI.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>English (UK)</string>
+						<key>value</key>
+						<string>en_GB.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>German</string>
+						<key>value</key>
+						<string>de_DE.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>French</string>
+						<key>value</key>
+						<string>fr_FR.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Spanish</string>
+						<key>value</key>
+						<string>es_ES.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Italian</string>
+						<key>value</key>
+						<string>it_IT.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Portuguese</string>
+						<key>value</key>
+						<string>pt_PT.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Dutch</string>
+						<key>value</key>
+						<string>nl_NL.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Polish</string>
+						<key>value</key>
+						<string>pl_PL.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Russian</string>
+						<key>value</key>
+						<string>ru_RU.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Japanese</string>
+						<key>value</key>
+						<string>ja_JP.UTF-8</string>
+					</dict>
+					<dict>
+						<key>label</key>
+						<string>Chinese (Simplified)</string>
+						<key>value</key>
+						<string>zh_CN.UTF-8</string>
+					</dict>
+				</array>
+				<key>placeholder</key>
+				<string>Select sorting language</string>
 				<key>required</key>
 				<false/>
-				<key>text</key>
-				<string>Scandinavian letters</string>
+				<key>trim</key>
+				<true/>
 			</dict>
 			<key>description</key>
-			<string>This flag will decide what script the sorting is based on. Sorting for scandinavian letters is most likely slower since it uses two different scripts.</string>
+			<string>Select the language/locale for sorting. This ensures proper alphabetical order for special characters (å, ä, ö, etc.). All languages use the same efficient sorting algorithm.</string>
 			<key>label</key>
-			<string>Special characters</string>
+			<string>Sorting Language</string>
 			<key>type</key>
-			<string>checkbox</string>
+			<string>popupbutton</string>
 			<key>variable</key>
-			<string>scandinavian</string>
+			<string>sort_locale</string>
 		</dict>
 	</array>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0.1</string>
+	<string>2.0.0</string>
 	<key>webaddress</key>
 	<string>www.ninjasmurf.se</string>
 </dict>
